@@ -1,0 +1,166 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header, footer {
+    background-color: hsl(0, 0%, 0%);
+    color: rgb(238, 238, 238);
+    text-align: center;
+    padding: 0.1em;em 0;
+}
+
+.head{
+    text-align: right;
+    text-justify: distribute;
+    padding: 0.1em 0;
+    
+}
+
+h1{
+
+    text-align: center;
+    padding: 0.5em 0;}
+
+
+h2{background-color: hsl(0, 0%, 100%);
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 1em 0;}
+    
+section, aside {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 1em;
+}
+
+img {
+    max-width: 50%;
+    height: auto;
+    border: 1px solid #ddd;
+    margin: 0.5em;
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+img:hover {
+    transform: scale(1.1);
+}
+
+
+nav ul  {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 1em;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+nav a:hover {
+    color: #ffd700; /* Cambia el color al pasar el ratón */
+}
+
+/* About */
+/* Centrar el texto en las secciones "Conócenos" y "Acerca de" */
+#about, #contact {
+    text-align: center;
+    padding: 20px; /* Agrega un espacio alrededor del texto según sea necesario */
+}
+
+#about h2, #contact h2 {
+    margin-bottom: 10px; /* Espaciado inferior para el encabezado */
+}
+
+#about p, #contact p {
+    margin: 0 auto; /* Centrar el texto horizontalmente */
+    max-width: 600px; /* Limitar el ancho del texto según sea necesario */
+}
+
+
+
+
+/*f0oma 1 */
+
+footer {
+    background-color: #333;
+    color: white;
+    padding: 1em 0;
+    text-align: center;
+}
+
+#footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.social-icons {
+    margin-top: 1em;
+}
+
+.social-icons a {
+    color: white;
+    margin: 0 0.5em;
+    font-size: 1.5em;
+    text-decoration: none;
+}
+
+/* Puedes agregar más estilos según sea necesario */
+
+
+
+/*
+carrusel
+*/
+
+
+#carousel-container {
+    overflow: hidden;
+    width: 80%; /* Ajusta según sea necesario */
+    margin: auto;
+    position: relative;
+}
+
+#gallery-carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+img {
+    max-width: 50%;
+    height: auto;
+}
+
+button {
+    position: absolute;
+    top: 90%;
+    width: 2rem;
+    transform: translateY(-50%);
+    background-color: hsl(0, 36%, 67%);
+    color: rgb(10, 9, 9);
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#prev-button {
+    left: 0;
+}
+
+#next-button {
+    right: 0;
+}
+
+
+
+  

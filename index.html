@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="backend/stilo.css">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-dqHIuEXiaZ1nkdz6IcNC3zp3SRbSSA5FfUpFHHF9qOp6pi+2V0yB6HcI2gJw9+L" crossorigin="anonymous">
+    <title>Galeria</title>
+</head>
+<body>
+    
+    <header class="head">
+        <h1>Galería de Arte</h1>
+        <nav  >  
+            <ul class="head1">
+                <li><a href="#gallery-carousel">Inicio</a></li>
+                <li><a href="#filters">Filtros</a></li>
+                <li><a href="#about">Acerca de</a></li>
+                <li><a href="#contact">Contacto</a></li>
+                <!-- Puedes agregar más elementos de menú según sea necesario -->
+            </ul>
+        </nav>
+    </header>
+
+    <h2>Arte</h2>
+    <section id="gallery">
+        <!-- Las imágenes se cargarán aquí dinámicamente -->
+        <img src="backend/img/6.jpg" alt="Pintura">
+        <img src="backend/img/4.jpg" alt="Lost">
+        <img src="backend/img/5.jpg" alt="Moure">
+        <img src="backend/img/3.jpg" alt="Astro">
+    </section>
+
+    <h2>Fotografia</h2>
+    <aside id="filters">
+
+        <section id="carousel-container">
+            <div id="gallery-carousel">
+               
+                <button id="prev-button"><</button>
+                <button id="next-button">></button>
+                <!-- Las imágenes del carrusel se cargarán aquí dinámicamente -->
+                 <!-- Opciones de filtro (pintura, fotografía, etc.) -->
+                <img src="backend/img/fo_1.jpg" alt="Pintura">
+                <img src="backend/img/Foto_2.jpg" alt="Lost">
+                <img src="backend/img/foto_3.jpg" alt="Moure">
+                
+            </div>
+        </section>
+
+
+
+        <section id="about">
+            <!-- Contenido de la sección "Acerca de" -->
+            <h2>Acerca de Nosotros</h2>
+             <!-- Contenido de la sección "Acerca de
+            <p class="acerca">Esta galería represnta el trabajo  de cada artistas que no represente 
+            los puntos de vista de las colecciones que incluyen las obras expuestas </p>   
+         -->
+        </section>
+    
+        <section id="contact">
+            <!-- Contenido de la sección "Contacto" -->
+            <h2>Contactanos</h2>
+            
+        </section>
+    
+    </aside>
+    
+
+    <footer>
+        <a>@Desarrollado RJ309</a>
+            
+    </footer>
+    
+
+
+    
+    <script src="app.js"></script>
+
+
+</body>
+</html>
