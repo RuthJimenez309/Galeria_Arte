@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-     // Actualizar el contenido dinámico del footer (fecha actual)
+     //
      const footerContent = document.getElementById("footer-content");
      const currentDate = new Date();
      const currentYear = currentDate.getFullYear();
