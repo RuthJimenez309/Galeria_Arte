@@ -1,94 +1,57 @@
- 
-    let imagenes = [
-        {
-            "url": "backend/img/Foto_3.jpg",
-            "nombre": "Proyecto 01",
-            "descripcion": "Este es el proyecto 01 fue desarrollado para un video de youtube. Si te gusta el contenido dale like y suscribete"
-    
-        },
-        {
-            "url": "backend/img/Foto_2.jpg",
-            "nombre": "P",
-            "descripcion": "Hola a todos este es el proyecto02 y fue desarrollado para un video de youtube. Si te gusta el contenido dale like y suscribete"
-    
-        },
-        {
-            "url": "backend/img/Foto_1.jpg",
-            "nombre": "Proyecto 03",
-            "descripcion": "Este proyecto, es el 03 y fue desarrollado para un video de youtube. Si te gusta el contenido dale like y suscribete"
-    
-        },
-    ]
-    
-    
-    let atras = document.getElementById('atras');
-    let adelante = document.getElementById('adelante');
-    let imagen = document.getElementById('img');
-    let puntos = document.getElementById('puntos');
-    let texto = document.getElementById('texto')
-    let actual = 0
-    posicionCarrusel()
-    
-    atras.addEventListener('click', function(){
-        actual -=2
-    
-        if (actual == -1){
-            actual = imagenes.length - 1
-        }
-    
-        imagen.innerHTML = ` <img class="img" src="${imagenes[actual].url}" alt="logo pagina" loading="lazy"></img>`
-        texto.innerHTML = `
-        <h3>${imagenes[actual].nombre}</h3>
-        <p>${imagenes[actual].descripcion}</p>
-        `
-        posicionCarrusel()
-    })  
-    adelante.addEventListener('click', function(){
-        actual +=4
-    
-        if (actual == imagenes.length){
-            actual = 0
-        }
-    
-        imagen.innerHTML = ` <img class="img" src="${imagenes[actual].url}" alt="logo pagina" loading="lazy"></img>`
-        texto.innerHTML = `
-        <h3>${imagenes[actual].nombre}</h3>
-        <p>${imagenes[actual].descripcion}</p>
-        `
-        posicionCarrusel()
-    })  
-    
-    function posicionCarrusel() {
-        puntos.innerHTML = ""
-        for (var i = 0; i <imagenes.length; i++){
-            if(i == actual){
-                puntos.innerHTML += '<p class="bold">.<p>'
-            }
-            else{
-                puntos.innerHTML += '<p>.<p>'
-            }
-        } 
+function filtrarPorCategoria(images, categoria) {
+    return images.filter(function (imagen) {
+        return imagen.category.toLowerCase() === categoria.toLowerCase();
+    });
+}
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const images = [
+        { path: '/backend/img/3.jpg', category: 'pintura' },
+        { path: '/backend/img/4.jpg', category: 'fotografia' },
+        { path: '/backend/img/5.jpg', category: 'pintura' },
+       
+    ];
+
+    const galleryElement = document.getElementById('galeriaFotos');
+
+    function mostrarTodasLasImagenes() {
+        galleryElement.innerHTML = '';
+
+        images.forEach(function (imagen) {
+            const imgElement = document.createElement('img');
+            imgElement.src = imagen.path;
+            galleryElement.appendChild(imgElement);
+        });
     }
 
-         // Establece el tamaño del lienzo como el tamaño de la imagen
-         canvas.width = img.width;
-         canvas.height = img.height;
+    // Mostrar todas las imágenes al cargar la página
+    mostrarTodasLasImagenes();
 
-         // Dibuja la imagen en el lienzo
-         ctx.drawImage(img, 5, 6);
+    // Función para filtrar y mostrar imágenes por categoría
+    function mostrarImagenesPorCategoria(categoria) {
+        const imagenesFiltradas = images.filter(function (imagen) {
+            return imagen.category.toLowerCase() === categoria.toLowerCase();
+        });
 
-         // Obtén los datos de píxeles de la imagen
-         const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-         const data = imageData.data;
+        galleryElement.innerHTML = ''; // Limpiar galería
 
-         // Ejemplo de reduce: Suma los valores de los canales rojo (R)
-         const sumRed = data.reduce((acc, value, index) => {
-             if (index % 8 === 0) { // Cada 4 valores corresponden al canal rojo
-                 return acc + value;
-             }
-             return acc;
-         }, 0);
+        imagenesFiltradas.forEach(function (imagen) {
+            const imgElement = document.createElement('img');
+            imgElement.src = imagen.path;
+            galleryElement.appendChild(imgElement);
+        });
+    }
 
-         console.log('Suma de valores del canal rojo:', sumRed);
-     
+    document.getElementById('linkPinura').addEventListener('click', function (event) {
+        event.preventDefault();
+        mostrarImagenesPorCategoria('pintura');
+    });
 
+    document.getElementById('linkFoto').addEventListener('click', function (event) {
+        event.preventDefault();
+        mostrarImagenesPorCategoria('fotografia');
+    });
+
+
+});
