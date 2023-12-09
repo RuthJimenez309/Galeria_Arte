@@ -1,73 +1,94 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const images = [
-        "https://placekitten.com/200/300",
-        "https://placekitten.com/201/300",
-        "https://placekitten.com/202/300",
-        "https://placekitten.com/203/300",
-        // Agrega más URLs según sea necesario
-    ];
-
-    // Función para cargar imágenes en el carrusel
-    function displayCarouselImages(imageArray) {
-        const carouselContainer = document.getElementById("gallery-carousel");
-        carouselContainer.innerHTML = ""; // Limpiar el carrusel
-
-        imageArray.forEach((url) => {
-            const imgElement = document.createElement("img");
-            imgElement.src = url;
-            carouselContainer.appendChild(imgElement);
-        });
+ 
+    let imagenes = [
+        {
+            "url": "backend/img/Foto_3.jpg",
+            "nombre": "Proyecto 01",
+            "descripcion": "Este es el proyecto 01 fue desarrollado para un video de youtube. Si te gusta el contenido dale like y suscribete"
+    
+        },
+        {
+            "url": "backend/img/Foto_2.jpg",
+            "nombre": "P",
+            "descripcion": "Hola a todos este es el proyecto02 y fue desarrollado para un video de youtube. Si te gusta el contenido dale like y suscribete"
+    
+        },
+        {
+            "url": "backend/img/Foto_1.jpg",
+            "nombre": "Proyecto 03",
+            "descripcion": "Este proyecto, es el 03 y fue desarrollado para un video de youtube. Si te gusta el contenido dale like y suscribete"
+    
+        },
+    ]
+    
+    
+    let atras = document.getElementById('atras');
+    let adelante = document.getElementById('adelante');
+    let imagen = document.getElementById('img');
+    let puntos = document.getElementById('puntos');
+    let texto = document.getElementById('texto')
+    let actual = 0
+    posicionCarrusel()
+    
+    atras.addEventListener('click', function(){
+        actual -=2
+    
+        if (actual == -1){
+            actual = imagenes.length - 1
+        }
+    
+        imagen.innerHTML = ` <img class="img" src="${imagenes[actual].url}" alt="logo pagina" loading="lazy"></img>`
+        texto.innerHTML = `
+        <h3>${imagenes[actual].nombre}</h3>
+        <p>${imagenes[actual].descripcion}</p>
+        `
+        posicionCarrusel()
+    })  
+    adelante.addEventListener('click', function(){
+        actual +=4
+    
+        if (actual == imagenes.length){
+            actual = 0
+        }
+    
+        imagen.innerHTML = ` <img class="img" src="${imagenes[actual].url}" alt="logo pagina" loading="lazy"></img>`
+        texto.innerHTML = `
+        <h3>${imagenes[actual].nombre}</h3>
+        <p>${imagenes[actual].descripcion}</p>
+        `
+        posicionCarrusel()
+    })  
+    
+    function posicionCarrusel() {
+        puntos.innerHTML = ""
+        for (var i = 0; i <imagenes.length; i++){
+            if(i == actual){
+                puntos.innerHTML += '<p class="bold">.<p>'
+            }
+            else{
+                puntos.innerHTML += '<p>.<p>'
+            }
+        } 
     }
 
-    // Mostrar imágenes en el carrusel al cargar la página
-    displayCarouselImages(images);
+         // Establece el tamaño del lienzo como el tamaño de la imagen
+         canvas.width = img.width;
+         canvas.height = img.height;
 
-    // Configurar el carrusel
-    let currentIndex = 0;
+         // Dibuja la imagen en el lienzo
+         ctx.drawImage(img, 5, 6);
 
-    function showNextImage() {
-        currentIndex = (currentIndex + 1) % images.length;
-        updateCarousel();
-    }
+         // Obtén los datos de píxeles de la imagen
+         const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+         const data = imageData.data;
 
-    function showPreviousImage() {
-        currentIndex = (currentIndex - 1 + images.length) % images.length;
-        updateCarousel();
-    }
+         // Ejemplo de reduce: Suma los valores de los canales rojo (R)
+         const sumRed = data.reduce((acc, value, index) => {
+             if (index % 8 === 0) { // Cada 4 valores corresponden al canal rojo
+                 return acc + value;
+             }
+             return acc;
+         }, 0);
 
-    function updateCarousel() {
-        const carouselContainer = document.getElementById("gallery-carousel");
-        carouselContainer.style.transform = `translateX(${-currentIndex * 100}%)`;
-    }
-
-    // Agregar eventos de clic para navegar por el carrusel
-    const nextButton = document.getElementById("prev-button");
-    const prevButton = document.getElementById("next-button");
-
-    nextButton.addEventListener("click", showNextImage);
-    prevButton.addEventListener("click", showPreviousImage);
-
-    // Efecto de desplazamiento suave al hacer clic en elementos del menú
-    document.querySelectorAll('nav a').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-
-            const targetId = this.getAttribute('href').substring(1);
-            const targetElement = document.getElementById(targetId);
-
-            window.scrollTo({
-                top: targetElement.offsetTop - header.offsetHeight,
-                behavior: 'smooth'
-            });
-        });
-    });
-
-
-
-     //
-     const footerContent = document.getElementById("footer-content");
-     const currentDate = new Date();
-     const currentYear = currentDate.getFullYear();
-     footerContent.innerText = `Desarrollado por Ruth, Estudiante de Ingeniería en Sistemas - ${currentYear}`;
-});
+         console.log('Suma de valores del canal rojo:', sumRed);
+     
 
