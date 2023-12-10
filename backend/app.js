@@ -39,6 +39,8 @@ document.addEventListener('DOMContentLoaded', function () {
         imagenesFiltradas.forEach(function (imagen) {
             const imgElement = document.createElement('img');
             imgElement.src = imagen.path;
+            imgElement.alt = imagen.category;
+            imgElement.classList.add('imagen');
             galleryElement.appendChild(imgElement);
         });
     }
@@ -52,6 +54,16 @@ document.addEventListener('DOMContentLoaded', function () {
         event.preventDefault();
         mostrarImagenesPorCategoria('fotografia');
     });
+
+
+    function generarEstadisticas() {
+        const estadisticas = images.reduce(function (accumulator, imagen) {
+            accumulator[imagen.category] = (accumulator[imagen.category] || 0) + 1;
+            return accumulator;
+        }, {});
+
+        console.log('Estadísticas:', estadisticas);
+    }  
 
 
 });
